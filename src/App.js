@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from 'firebase';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, ListGroup } from 'reactstrap';
 import HeaderOrder from './components/HeaderOrder';
 import ListMenu from './components/ListMenu';
 import TabMenu from './components/TabMenu';
@@ -21,8 +21,6 @@ db.settings({
   timestampsInSnapshots: true
 });
 
-
-
 class App extends Component {
   constructor() {
     super()
@@ -30,30 +28,45 @@ class App extends Component {
       inputName: '',
       tableSelected: '',
       listMenus: [],
-      listCategory: ['Desayuno', 'Almuerzo y Cena', 'Bedidas'],
+      listCategory: [],
       orderDetail: []
     }
   }
 
-  getMenus = (category) => db.collection("CategoryMenu").doc(category).collection(category).get()
+  getCategory = () => db.collection("CategoryMenu")
 
-  componentWillMount() {
-    this.getMenus('Desayuno').then((docs) => {
+  getMenus = (category) => this.getCategory().doc(category).collection(category).get()
 
+  updateListMenus = (category) => {
+    this.getMenus(category).then((docs) => {
       const arr = []
       let obj = {}
       docs.forEach(doc => {
         obj = doc.data()
         obj.id = doc.id
-
         arr.push(obj)
       })
-      console.log(arr);
-
       this.setState({
         listMenus: arr
       })
     })
+  }
+  componentDidMount() {
+    this.getCategory().get().then((docs) => {
+      const { listCategory } = this.state
+      docs.forEach(doc => {
+        listCategory.push(
+          {
+            [doc.id]: doc.data()
+          }
+        )
+      })
+
+      this.setState({
+        listCategory
+      })
+    })
+    this.updateListMenus('Desayuno')
   }
 
   handleOnInputName = (input) => {
@@ -67,13 +80,6 @@ class App extends Component {
       tableSelected: selected
     })
   }
-
-  // setOrder = (id) => {
-  //   // db.collection("Order").doc().set({
-  //   //   name: "Gaby",
-  //   //   menu: listMenus[id],
-  //   // })
-  // }
 
   handleOnAddOrder = (e) => {
     const index = e.currentTarget.id
@@ -92,6 +98,9 @@ class App extends Component {
       this.setState({
         orderDetail
       })
+
+      console.log(orderDetail);
+      
     }
     else {
       objMenu.count = 1
@@ -100,15 +109,10 @@ class App extends Component {
       })
     }
 
+  }
 
-
-    // const id = e.currentTarget.id
-    // const { listMenus } = this.state
-
-    // db.collection("OrderDetail").doc().set({
-    //   menu: listMenus[id],
-    // })
-
+  handleChangeCategory = (category) => {
+    this.updateListMenus(category)
   }
 
   render() {
@@ -126,6 +130,7 @@ class App extends Component {
           <Col xs="12" sm="8" md="8">
             <TabMenu
               listTabs={this.state.listCategory}
+              changeCategory={this.handleChangeCategory}
             />
             <ListMenu
               menus={this.state.listMenus}
@@ -133,10 +138,19 @@ class App extends Component {
             />
           </Col>
           <Col xs="12" sm="4" md="4">
-            <OrderDetail
-              orderDetail={this.state.orderDetail}
-            // orders={this.state.OrderDetail}
-            />
+            <ListGroup>
+              <OrderDetail
+                orderDetail={this.state.orderDetail}
+
+              // orders={this.state.OrderDetail}
+              />
+              <div>
+                <h6>
+                  Total
+				        	{}
+                </h6>
+              </div>
+            </ListGroup>
           </Col>
         </Row>
       </Container>

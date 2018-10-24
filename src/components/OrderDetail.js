@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table,ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 // const listStyle = {
 // 	display: 'flex',
@@ -12,7 +12,7 @@ export default ({ orderDetail }) => {
 	
 	return (
 		<div>
-			<ListGroup>
+			
 				<Table hover>
 					<thead>
 
@@ -21,6 +21,8 @@ export default ({ orderDetail }) => {
 							<th>Nombre</th>
 							<th>S/.</th>
 							<th>Cant.</th>
+							<th>Tot.</th>
+							<th>   </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,23 +34,15 @@ export default ({ orderDetail }) => {
 									<td>{order.name}</td>
 									<td>{order.price}.00</td>
 									<td>{order.count}</td>
+									<td>{order.count*order.price}</td>
 									<td><Button color="link"><i className="fas fa-trash"></i></Button></td>
-							
 								</tr>
-								// <ListGroupItem
-								//     style={listStyle}
-								//     key={order.menuId}
-								//     id={order.menuId}
-								// >
-								//     <p>{order.menuName}</p>
-								//     <Button color="link"><i className="fas fa-trash"></i></Button>
-								// </ListGroupItem>
 							)
 						}
 					</tbody>
-
 				</Table>
-			</ListGroup>
+				
+			
 		</div>
 	)
 

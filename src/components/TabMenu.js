@@ -3,11 +3,11 @@ import { Nav, NavItem, NavLink,  } from 'reactstrap';
 import classnames from 'classnames';
 
 export default class TabMenu extends React.Component {
-  constructor({listTabs}) {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      listTabs,
-      flagActive: 0
+      listTabs: this.props.listTabs,
+      flagActive: 2
     }
   }
 
@@ -18,19 +18,24 @@ export default class TabMenu extends React.Component {
   }
   render() {
     let { flagActive } = this.state
-
     return (
+      
         <Nav tabs>
           {this.state.listTabs.map((elem, i) =>
             <NavItem key={i}>
               <NavLink
                 className={classnames({ active: flagActive === i })}
-                onClick={() => this.changeFlag(i)}
+                onClick={() => 
+                  {
+                    this.changeFlag(i)
+                    this.props.changeCategory(Object.keys(elem)[0])
+                  }
+                }
               >
-                {elem}
+                {elem[Object.keys(elem)[0]].name}
               </NavLink>
             </NavItem>
-          )}
+          ).reverse()}
         </Nav>
     )
   }
