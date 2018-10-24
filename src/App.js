@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from 'firebase';
-import { Container, Row, Col, ListGroup } from 'reactstrap';
+import { Container, Button, Row, Col } from 'reactstrap';
 import HeaderOrder from './components/HeaderOrder';
 import ListMenu from './components/ListMenu';
 import TabMenu from './components/TabMenu';
 import OrderDetail from './components/OrderDetail';
+import Total from './components/Total';
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyDk55mWsIWR6tUb6cKBsvTbbC4oAG2HuVU",
@@ -26,10 +28,10 @@ class App extends Component {
     super()
     this.state = {
       inputName: '',
-      tableSelected: '',
       listMenus: [],
       listCategory: [],
-      orderDetail: []
+      orderDetail: [],
+      total: 0
     }
   }
 
@@ -75,12 +77,6 @@ class App extends Component {
     })
   }
 
-  handleOnDropdown = (selected) => {
-    this.setState({
-      tableSelected: selected
-    })
-  }
-
   handleOnAddOrder = (e) => {
     const index = e.currentTarget.id
     const { orderDetail } = this.state
@@ -96,25 +92,63 @@ class App extends Component {
     if (ind !== null) {
       orderDetail[ind].count++
       this.setState({
-        orderDetail
+        orderDetail,
       })
-
-      console.log(orderDetail);
-      
+      this.updateTotal(orderDetail)
     }
     else {
       objMenu.count = 1
       this.setState({
-        orderDetail: orderDetail.concat(objMenu)
+        orderDetail: orderDetail.concat(objMenu),
       })
+      this.updateTotal(orderDetail.concat(objMenu))
     }
+  }
 
+  updateTotal = (orderDetail) => {
+    this.setState({
+      total: orderDetail.reduce((a, b) => { return a + (b.price * b.count) }, 0)
+    })
   }
 
   handleChangeCategory = (category) => {
     this.updateListMenus(category)
   }
 
+  handleDeleteOrder = (index) => {
+    this.setState({
+      orderDetail: this.state.orderDetail.filter((elm, i) => i !== index)
+    })
+  }
+
+  handleSaveOrder = () => {
+    db.collection("order").add({
+      client: this.state.inputName,
+      total: this.state.total
+    })
+      .then(result => {
+        this.state.orderDetail.forEach(elem => {
+          db.collection("orderDetail").add({
+            id: result.id,
+            menu: elem.name,
+            price: elem.price,
+            count: elem.count,
+            total: (elem.price * elem.count),
+          })
+        })
+
+        this.cleanOrderDetail()
+      }
+      )
+
+  }
+
+  cleanOrderDetail = () => {
+    this.setState({
+      orderDetail: [],
+      total: 0
+    })
+  }
   render() {
     return (
       <Container>
@@ -122,7 +156,6 @@ class App extends Component {
           <Col>
             <HeaderOrder
               onInputName={this.handleOnInputName}
-              onDropdown={this.handleOnDropdown}
             />
           </Col>
         </Row>
@@ -138,19 +171,18 @@ class App extends Component {
             />
           </Col>
           <Col xs="12" sm="4" md="4">
-            <ListGroup>
-              <OrderDetail
-                orderDetail={this.state.orderDetail}
-
-              // orders={this.state.OrderDetail}
-              />
-              <div>
-                <h6>
-                  Total
-				        	{}
-                </h6>
-              </div>
-            </ListGroup>
+            <OrderDetail
+              orderDetail={this.state.orderDetail}
+              deteleOrder={this.handleDeleteOrder}
+            />
+            <Total
+              total={this.state.total}
+            />
+            <Button
+              color="secondary"
+              size="sm"
+              onClick={this.handleSaveOrder}
+            >Ordenar</Button>
           </Col>
         </Row>
       </Container>

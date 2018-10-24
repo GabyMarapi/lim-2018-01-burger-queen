@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Row, Col, Input } from 'reactstrap';
 
 export default class headerOrder extends Component {
 	constructor(props) {
@@ -18,19 +18,7 @@ export default class headerOrder extends Component {
 	render() {
 		return (
 			<Row>
-				<Col xs="3" sm="3" md="3">
-					<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-						<DropdownToggle caret>
-							N° Mesa
-						</DropdownToggle>
-						<DropdownMenu onClick={(e)=>this.props.onDropdown(e.target.id)}>
-							<DropdownItem id='k'>Another Action</DropdownItem>
-							<DropdownItem id='k1'>Another Action</DropdownItem>
-							<DropdownItem id='k2'>Another Action</DropdownItem>
-						</DropdownMenu>
-					</Dropdown>
-				</Col>
-				<Col xs="3" sm="3" md="3">
+				<Col xs="6" sm="6" md="6">
 					<Input 
 					placeholder="Ingresar nombre del cliente" 
 					onChange={(e)=>this.props.onInputName(e.target.value)}/>

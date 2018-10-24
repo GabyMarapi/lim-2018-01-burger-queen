@@ -22,7 +22,10 @@ export default class TabMenu extends React.Component {
       
         <Nav tabs>
           {this.state.listTabs.map((elem, i) =>
-            <NavItem key={i}>
+            <NavItem 
+            key={i}
+            style={{cursor : 'pointer'}}
+            >
               <NavLink
                 className={classnames({ active: flagActive === i })}
                 onClick={() => 
