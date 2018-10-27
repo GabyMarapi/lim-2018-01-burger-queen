@@ -29,7 +29,17 @@ class App extends Component {
     this.state = {
       inputName: '',
       listMenus: [],
-      listCategory: [],
+      listCategory:[],
+      menus:{
+        listCategory: [],
+        listMenus: []
+      },
+      order:{
+        clientName: null,
+        date: null,
+        total: 0,
+        orderDetail:[]
+      },
       orderDetail: [],
       total: 0
     }
@@ -40,6 +50,9 @@ class App extends Component {
   getMenus = (category) => this.getCategory().doc(category).collection(category).get()
 
   updateListMenus = (category) => {
+
+
+
     this.getMenus(category).then((docs) => {
       const arr = []
       let obj = {}
@@ -54,6 +67,8 @@ class App extends Component {
     })
   }
   componentDidMount() {
+
+
     this.getCategory().get().then((docs) => {
       const { listCategory } = this.state
       docs.forEach(doc => {
@@ -62,7 +77,10 @@ class App extends Component {
             [doc.id]: doc.data()
           }
         )
+      console.log(doc);
+
       })
+      
 
       this.setState({
         listCategory
@@ -75,6 +93,10 @@ class App extends Component {
     this.setState({
       inputName: input
     })
+
+
+
+
   }
 
   handleOnAddOrder = (e) => {
