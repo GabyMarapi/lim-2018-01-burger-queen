@@ -19,7 +19,7 @@ export default class headerOrder extends Component {
 		return (
 			<Row>
 				<Col xs="6" sm="6" md="6">
-					<Input 
+				<label></label><Input 
 					placeholder="Ingresar nombre del cliente" 
 					onChange={(e)=>this.props.onInputName(e.target.value)}/>
 				</Col>
