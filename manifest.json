@@ -3,102 +3,102 @@
     "name": "Create React App Sample",
     "icons": [
         {
-            "src": "/images/favicon.ico",
+            "src": "./images/images/favicon.ico",
             "sizes": "64x64 32x32 24x24 16x16",
             "type": "image/x-icon"
         },
         {
-            "src": "/images/27ca0b77-c8c6-3fbe-e914-953718ac07e7.webPlatform.png",
+            "src": "./images/images/27ca0b77-c8c6-3fbe-e914-953718ac07e7.webPlatform.png",
             "sizes": "44x44",
             "type": "image/png"
         },
         {
-            "src": "/images/64e4b33b-0d84-d3c0-b34b-76fab43e76bc.webPlatform.png",
+            "src": "./images/images/64e4b33b-0d84-d3c0-b34b-76fab43e76bc.webPlatform.png",
             "sizes": "48x48",
             "type": "image/png"
         },
         {
-            "src": "/images/eb79d424-2ffa-37c7-c554-1db05ac86320.webPlatform.png",
+            "src": "./images/images/eb79d424-2ffa-37c7-c554-1db05ac86320.webPlatform.png",
             "sizes": "1240x600",
             "type": "image/png"
         },
         {
-            "src": "/images/790d3c24-1845-94bd-6056-02eb0294f466.webPlatform.png",
+            "src": "./images/images/790d3c24-1845-94bd-6056-02eb0294f466.webPlatform.png",
             "sizes": "300x300",
             "type": "image/png"
         },
         {
-            "src": "/images/ef26ae5a-8efd-2f93-e740-5171d252c94a.webPlatform.png",
+            "src": "./images/images/ef26ae5a-8efd-2f93-e740-5171d252c94a.webPlatform.png",
             "sizes": "150x150",
             "type": "image/png"
         },
         {
-            "src": "/images/77a7b90a-eedb-5f1b-eb9d-ad07f3cae546.webPlatform.png",
+            "src": "./images/images/77a7b90a-eedb-5f1b-eb9d-ad07f3cae546.webPlatform.png",
             "sizes": "88x88",
             "type": "image/png"
         },
         {
-            "src": "/images/48fe63e2-9b80-2c03-b95b-9b9627436659.webPlatform.png",
+            "src": "./images/images/48fe63e2-9b80-2c03-b95b-9b9627436659.webPlatform.png",
             "sizes": "24x24",
             "type": "image/png"
         },
         {
-            "src": "/images/3d7bd105-c4f6-65e4-5fef-b5358c69658e.webPlatform.png",
+            "src": "./images/images/3d7bd105-c4f6-65e4-5fef-b5358c69658e.webPlatform.png",
             "sizes": "50x50",
             "type": "image/png"
         },
         {
-            "src": "/images/b05e0242-fe00-0e76-4d78-8d2448b3bfc0.webPlatform.png",
+            "src": "./images/images/b05e0242-fe00-0e76-4d78-8d2448b3bfc0.webPlatform.png",
             "sizes": "620x300",
             "type": "image/png"
         },
         {
-            "src": "/images/841fdd63-c22c-5b74-5485-dff0f82b1fe7.webPlatform.png",
+            "src": "./images/images/841fdd63-c22c-5b74-5485-dff0f82b1fe7.webPlatform.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/images/4e6d4b46-8156-2dcd-071c-cd792e2e6623.webPlatform.png",
+            "src": "./images/images/4e6d4b46-8156-2dcd-071c-cd792e2e6623.webPlatform.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/images/f7618c60-670b-45b0-2e25-405f1b3d7c67.webPlatform.png",
+            "src": "./images/images/f7618c60-670b-45b0-2e25-405f1b3d7c67.webPlatform.png",
             "sizes": "96x96",
             "type": "image/png"
         },
         {
-            "src": "/images/59e4d032-354e-dc02-6ffb-d2916b28a31c.webPlatform.png",
+            "src": "./images/images/59e4d032-354e-dc02-6ffb-d2916b28a31c.webPlatform.png",
             "sizes": "72x72",
             "type": "image/png"
         },
         {
-            "src": "/images/c42b5a8b-f850-5fc8-64ef-e6efe5303e88.webPlatform.png",
+            "src": "./images/images/c42b5a8b-f850-5fc8-64ef-e6efe5303e88.webPlatform.png",
             "sizes": "36x36",
             "type": "image/png"
         },
         {
-            "src": "/images/ios/ios-appicon-1024-1024.png",
+            "src": "./images/images/ios/ios-appicon-1024-1024.png",
             "sizes": "1024x1024",
             "type": "image/png"
         },
         {
-            "src": "/images/77dade73-cafc-715b-6877-92eea376a0ce.webPlatform.png",
+            "src": "./images/images/77dade73-cafc-715b-6877-92eea376a0ce.webPlatform.png",
             "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "/images/a66ec2fe-6363-b90e-e216-c1ccba1ba733.webPlatform.png",
+            "src": "./images/images/a66ec2fe-6363-b90e-e216-c1ccba1ba733.webPlatform.png",
             "sizes": "152x152",
             "type": "image/png"
         },
         {
-            "src": "/images/85f3faf8-2432-21ce-3de4-c74e74c41e33.webPlatform.png",
+            "src": "./images/images/85f3faf8-2432-21ce-3de4-c74e74c41e33.webPlatform.png",
             "sizes": "120x120",
             "type": "image/png"
         },
         {
-            "src": "/images/773b0df8-adaa-cbcf-366a-b8f5bbfced8a.webPlatform.png",
+            "src": "./images/images/773b0df8-adaa-cbcf-366a-b8f5bbfced8a.webPlatform.png",
             "sizes": "76x76",
             "type": "image/png"
         }
