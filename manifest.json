@@ -103,7 +103,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "https://gabymarapi.github.io/lim-2018-01-burger-queen/?launcher=true",
+    "start_url": "https://gabymarapi.github.io/lim-2018-01-burger-queen/?utm_source=web_app_manifest",
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#ffffff"
